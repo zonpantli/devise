@@ -199,10 +199,19 @@ module Devise
       # then to the url specified by after_sign_in_path_for. It accepts the same
       # parameters as the sign_in method.
       def sign_in_and_redirect(resource_or_scope, *args)
+        puts "DEVISE: sign_in_and_redirect"
         options  = args.extract_options!
+        puts "DEVISE: options"
+        puts "DEVISE: " + options.inspect
         scope    = Devise::Mapping.find_scope!(resource_or_scope)
+        puts "DEVISE: scope"
+        puts "DEVISE: " + scope.inspect
         resource = args.last || resource_or_scope
+        puts "DEVISE: resource"
+        puts "DEVISE: " + resource.inspect
         sign_in(scope, resource, options)
+        puts "DEVISE: redirect_location"
+        puts "DEVISE: " + redirect_location(scope, resource).inspect
         redirect_to redirect_location(scope, resource)
       end
 
