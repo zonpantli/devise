@@ -216,6 +216,11 @@ module Devise
       end
 
       def redirect_location(scope, resource) #:nodoc:
+        puts "DEVISE: METHOD: redirect_location"
+        puts "DEVISE: stored_location_for(scope)"
+        puts "val: " + stored_location_for(scope).inspect
+        puts "DEVISE: after_sign_in_path_for(resource)"
+        puts "val: " + after_sign_in_path_for(resource).inspect
         stored_location_for(scope) || after_sign_in_path_for(resource)
       end
 
